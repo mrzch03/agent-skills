@@ -7,7 +7,7 @@ description: 新需求"完整版"开发流程 SOP(重型, 有 DB/接口依赖的
 
 **这是"重型"流程**,适合有 DB / 接口依赖的真需求。本流程是**编排**:子步骤用你手边的工具/流程,自己只加两段独有价值——**需求挑战**和**技术方案模版**。每个阶段有交付物 + 闸门,不过不进下一步。
 
-> 各阶段工具无关:用你自己的 issue 流程、文档工具、代码 review / codex、验证手段;开发规范统一走 `dev-standards`。
+> 子步骤复用**本仓内** skill:`issue-branch`(issue+带编号分支)、`codex-review`(独立评审闸门)、`verify`(带证据自测);文档工具无关(飞书/Confluence/Notion);开发规范统一走 `dev-standards`。
 
 ## 阶段
 
@@ -17,7 +17,7 @@ description: 新需求"完整版"开发流程 SOP(重型, 有 DB/接口依赖的
 **产出**:一句话需求目标(是目标不是方案)+ 砍掉/收敛后的范围。**改不改用户拍板。**
 
 ### 1. 提 issue
-形成的需求提 issue + 建带编号分支(走你的 issue 流程)。issue 写:背景 + 目标 + 范围(不含实现);从 issue 派生带编号的分支。
+形成的需求提 issue + 建带编号分支(走 `issue-branch`)。issue 写:背景 + 目标 + 范围(不含实现);从 issue 派生带编号的分支。
 
 ### 2. 技术方案(梳理最原始依赖)— 独有
 先梳理清楚**最原始的 DB 依赖、接口依赖、流程**,再按 `references/tech-design-template.md` 的结构**写成文档**(工具无关:飞书/Confluence/Notion 均可),把**文档链接挂回 issue**。
@@ -29,17 +29,17 @@ description: 新需求"完整版"开发流程 SOP(重型, 有 DB/接口依赖的
 **进开发闸门**:A 直接进;B 补齐细节再进;**C/D 回炉再评审**。评分 + 待办回贴 issue。
 
 ### 4. 开发
-按 `dev-standards`:**每条 TODO 单独 commit**(message 引用 TODO/issue 编号);**不在 testing 直接提交**;DB/Redis 过 db-conventions(禁全表/全库扫、过 EXPLAIN)。
+按 `dev-standards`:**每条 TODO 单独 commit**(message 引用 TODO/issue 编号);**不在集成分支直接提交**;DB/Redis 过 db-conventions(禁全表/全库扫、过 EXPLAIN)。
 
-### 5. 代码 review / codex 独立评审(带全上下文)— 闸门
-做代码 review / codex 独立评审。**必须把 开发规范 + 需求背景 + 技术方案 一起喂给评审**——让它按方案和规范审,不是空审 diff。
+### 5. 独立评审(带全上下文)— 闸门
+走 `codex-review`(独立审 diff)。**必须把 开发规范 + 需求背景 + 技术方案 一起喂给评审**——让它按方案和规范审,不是空审 diff。
 CHANGES_REQUESTED → 改完同分支再审;APPROVE → 进测试。
 
 ### 6. 测试 case 回 issue
 review 完形成测试 case,**回复到 issue 上**,把要测的链路讲清楚:**入口 → 数据 → 预期 → 证据点**。
 
 ### 7. 测试 + 证据
-**能直接测试验证的,直接测,并提交证据**(日志 / 截图 / DB 行 / trace)到 issue;不能自测的,在 issue 标明需要谁 / 什么环境测。
+走 `verify`:**能直接测试验证的,直接测,并提交证据**(日志 / 截图 / DB 行 / trace)到 issue;不能自测的,在 issue 标明需要谁 / 什么环境测。
 
 ## 闸门小结
 需求挑战 → issue → **方案评审过** → 开发 → **codex APPROVE** → 测试 case + 证据。任一闸门不过,不进下一步。

@@ -15,6 +15,10 @@
 | **dev-standards** | 通用开发规范:设计原则(八条判据)、开发流程、提交规范、DB·Redis 硬规范、协作。被其它场景 skill 引用 |
 | **feature-flow** | 做需求的完整 SOP:需求挑战 → issue → 技术方案(模版)→ 评审(rubric/ABCD)→ 开发 → 独立评审 → 测试+证据;每阶段带闸门 |
 | **project-skill-blueprint** | 给一个项目/业务场景建"认知 skill"的骨架:目录约定 + 维护纪律 + 可复制 skeleton |
+| **hotfix-flow** | 小改/紧急修的轻流程(区别于重型 feature-flow):定根因 →(可选)issue → 改 → 自测+证据 → 轻评审 → 上线带回滚 |
+| **issue-branch** | issue 优先 + 带编号分支纪律(Issue→分支→开发→PR 关 Issue),工具无关 |
+| **codex-review** | 独立评审闸门:喂规范+背景+方案,独立读 diff 出 VERDICT(APPROVE/CHANGES_REQUESTED) |
+| **verify** | 带证据的验证:真跑、观察预期、留日志/截图/DB行/trace,别在没证据时说"做完了" |
 
 ## 安装
 ```bash
