@@ -29,6 +29,8 @@ xcrun devicectl device install app --device 00008150-001D1931367A401C \
 - **模拟器视觉 QA**:DEBUG 启动参数 `-qaToken <jwt> -qaApiBase <url> -qaScreen plan|map|profile`;token 在 pod 内 `signSessionJWT(uid)` 铸;测试用户必须插 users+points+**memberships** 三行,provider 必须是 email/phone/apple。
 - 数据库:pg pod `postgres-0` ns clawbox,DB `tapio`(用户/额度/讲义)与 `pawclass`(学情),用户 `clawbox`。
 
+- **App Store Connect 网页操作**:交 codex 用 Chrome 扩展在用户已登录的 Chrome 里直接做(建 record/TestFlight 分组/合规/元数据);写好步骤说明再交办(样例:Tapio 仓 `docs/asc-create-app.md`)。**上传 ipa 别依赖 Xcode 的 upload 会话(会抽风)**:export ipa 后 `xcrun altool --upload-app -t ios -u <AppleID> -p <app专用密码>` 最稳。
+
 ## ClawBox 主线
 - **部署**:4 条 CI(push 触发;class-server 走 deploy-class.yml);详见 clawbox 本地 skill `workflow/verify-and-deploy.md`。
 - **PawClass 知识库(私教课底料)**:运行时真相在 K8s PVC `/data/knowledge-base`(class-server 挂载,不进镜像);版本化镜像 + 双向同步 SOP + 概念文件格式契约在 clawbox 仓 **`kb/README.md`**(2026-07-03 PR #224)。改素材:改仓库→推 PVC→**重启 tapio-server**(进程内 conceptDetailCache)。概念 md 必须有 `## 规则/易错点/例句` 的 `- ` bullet,否则 Tapio 私教课抽空底料。
