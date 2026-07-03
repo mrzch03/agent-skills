@@ -14,7 +14,7 @@
 ## 阶段 1 · 别人用得好(2-4 周,种子期)
 - [ ] 种子用户 5-10 个(朋友的孩子),建反馈微信群
 - [x] **Echo Brain ①**(2026-07-03 上线):transcripts+learner_notes+nightly dream+课堂注入,生产 e2e 验证通过
-- [ ] App 内反馈入口(Profile 一行)
+- [x] App 内反馈入口(2026-07-03):Profile'反馈与建议'行,mailto 带机型/版本,已装机
 - [x] 日报脚本(2026-07-03):`apps/server/scripts/daily-stats.mjs`,首份数据:近24h 学习者2/会话6/开口22轮/dream档案1
 - [ ] 按反馈快修循环(体验问题 48h 内响应)
 
