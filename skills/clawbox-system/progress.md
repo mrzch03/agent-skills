@@ -3,6 +3,8 @@
 > 2026-07-03 初始化。
 
 ## 进行中
+- **Echo Brain ② Phase A 开工**(2026-07-04 凌晨,clawbox issue #226):方向=创始人拍板("认识孩子要基于 agent 系统");形态=tapio-brain service(clawbox monorepo 新包,workspace 引 agent-engine 心智内核,每学习者一个目录,内部 HTTP 供 tapio-server 调)。**A1 已合并(PR #227)**:exports 导出 + 骨架 + import smoke 实证(runAgent+9 specs 容器外干净加载)。下一步 A2:M1 relay 凭据跑真 dream turn,产出对齐 learner_notes。
+- **真实链路首次复盘完成**(2026-07-04 凌晨):核心教学闭环生产验证✓(三单纠错→跟我读→产出);修了 2 个 prompt 问题(凭空夸奖/超范围承诺日语课,`f6b479c`)+ 纠错 15.4s(无上限 thinking,加 4096 cap);待观察:今晚首次 dream 后 chat 应带 notes=yes。
 - **KB 素材线**(2026-07-03 下午,两轮):① 发现并版本化生产 PVC 知识库(41 概念/全册 syllabus,此前唯一副本无备份;仓库只有 9 概念过时种子)→ clawbox PR #224,同步 SOP 在 `kb/README.md`。② 充实 4 个薄概念(comparative-adjectives/exclamatory-sentences/some-in-questions/whom-usage)→ 同 PR。③ **按真实学情打磨最弱 3 概念**(concept_mastery 07-02:be-verb 5练4错 / personal-pronouns 3/3错 / yes-no-questions 2/2错):这些文件不薄但由增量追加长成,整条重复的 bullet 挤占 Tapio 只抽前 4/3/4 条的头部槽位,例句混教材对话残留(M:/W:)→ 全文去重重排,PR #225 已合并,PVC 已推,tapio 已重启。**经验:KB 文件"厚"≠"能用",头部槽位质量才是私教课底料质量;agent 增量追加会长出重复,新素材过一遍抽取窗口检查。** 剩余薄文件多为技能型概念(阅读/写作/翻译),语音课很少命中,低优先级。
 - **用户真实账号 = `usr_OoDYgPXMB_YT`**(apple 登录);7/2 真机会话已给 12 个概念写回学情,学情回流链路(correction→concept_mastery)实测在工作。查学情:`kubectl exec -n clawbox postgres-0 -- psql -U clawbox -d pawclass -c "SELECT ... FROM concept_mastery WHERE user_id='usr_OoDYgPXMB_YT'"`。
 - **第一次 nightly dream 是今晚**:北京 7/4 03:30(此前台账把时间线记早了一天——transcripts 首批数据是 7/3 12:33 部署后才有的)。重启后定时器已重挂(pod 日志 `next nightly sweep in 643 min`)。明早验证:`grep '\[dream\]'` + daily-stats。
