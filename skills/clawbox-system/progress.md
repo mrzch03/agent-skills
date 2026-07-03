@@ -10,7 +10,8 @@
 - **90 天收敛战法执行中**(2026-07-03 用户拍板):只投 Tapio+PawClass;其余冷冻保活;agent-engine ≥50 周活触发。每次会话按此分配时间。
 - Tapio:等用户真机走"初见+一节课"终验(PTT 手感/黑板时机/等级准确度)。
 - **crash 采集已上线**(2026-07-03 晚,Tapio `97b99ac`):iOS MetricKit CrashReporter + POST /metrics/diagnostics + client_diagnostics 表(JSONB,人读)。45 测试过,已部署,等下一次真机安装生效。查询:`SELECT kind, app_version, created_at FROM client_diagnostics`。
-- **TestFlight 建 record 说明已写**:Tapio 仓 `docs/asc-create-app.md`,可交任意 agent/操作者照做;我的自动化浏览器窗口也还开着备用。
+- **TestFlight 已上传**(2026-07-03 晚):ASC App record 建好(App ID 6787105369)→ 1.0(1) `Upload succeeded`(含 CrashReporter)。等 Apple 处理后用户在 TestFlight 页答一次出口合规(仅这包;`ITSAppUsesNonExemptEncryption=NO` 已进工程)+ 建内部测试组。上传命令:`xcodebuild -exportArchive -archivePath /tmp/tapio-release/Tapio.xcarchive -exportOptionsPlist /tmp/tapio-release/uploadOptions.plist -allowProvisioningUpdates`(先跑 scripts/release-ios.sh 归档)。
+- **真机反馈两连修**(2026-07-03 晚,Tapio `4450e65`+`a419e7a`):①语音条去 ASR 中间态——按下即"录音中"胶囊,松手~450ms 可回放,ASR 文字只作纠错 key 不展示;②首页 mic pill 直进 live 自由聊(新 kind 'chat',镜像 meet 的零压力语义,notes 注入,不进场景库,喂 dream);删 VoiceCreateOverlay+SpeechRecognizer 死代码。服务端已部署,真机等安装(重试循环挂着)。
 - 教育备案:未启动,是正式上线最长杆——需尽早。
 
 ## 待验证
