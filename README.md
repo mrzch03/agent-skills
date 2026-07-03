@@ -20,6 +20,14 @@
 | **codex-review** | 独立评审闸门:喂规范+背景+方案,独立读 diff 出 VERDICT(APPROVE/CHANGES_REQUESTED) |
 | **verify** | 带证据的验证:真跑、观察预期、留日志/截图/DB行/trace,别在没证据时说"做完了" |
 
+## 项目系统 skill(2026-07-03 起,本仓新增分区)
+除通用骨架外,本仓也承载**我们自己的产品体系总纲**:
+| skill | 作用 |
+|---|---|
+| **clawbox-system** | ClawBox 产品体系:使命→发展路线→产品矩阵→部署→查问题 + 跨会话迭代仪式。做方向决策/接手任何产品线先读 |
+
+约定:体系层住这里;各项目的深度认知仍住项目自己的认知 skill(一份事实一个家)。
+
 ## 安装
 ```bash
 ./install.sh              # 软链 skills/* 进 ~/.claude/skills(默认)
