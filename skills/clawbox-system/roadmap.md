@@ -6,7 +6,7 @@
 分发(无 TestFlight,没人能自己装)· 反馈闭环(无崩溃上报/行为漏斗/反馈入口)· 值守(服务挂了没人知道)· 记忆(Echo 不记得孩子,只有学情数据)· 内容(一册书 ~9 关)· 收款(IAP 占位)· 合规(备案未启动)· 增长(零)。
 
 ## 阶段 0 · 能给别人(本周)
-- [ ] TestFlight:唯一卡点 = Apple ID 登录 Xcode(**用户动作**);`scripts/release-ios.sh`+exportOptions 已就绪(2026-07-03)
+- [~] TestFlight:Apple ID 已登录 ✓;**首个 App Store 签名 .ipa 已产出**(2026-07-03,release-ios.sh 全流程通);剩最后一步=ASC 网页建 App 记录(用户 2 分钟)→ 上传即上 TestFlight
 - [x] `/healthz` 端点 + 循环值守(每小时探活+关键指标,见 SKILL.md 迭代仪式)
 - [ ] 崩溃采集:接 MetricKit/第三方(候选 Sentry)——排期
 - [ ] 备案启动(**用户动作**:法务/资质材料)
