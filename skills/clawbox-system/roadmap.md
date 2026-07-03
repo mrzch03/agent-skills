@@ -6,7 +6,7 @@
 分发(无 TestFlight,没人能自己装)· 反馈闭环(无崩溃上报/行为漏斗/反馈入口)· 值守(服务挂了没人知道)· 记忆(Echo 不记得孩子,只有学情数据)· 内容(一册书 ~9 关)· 收款(IAP 占位)· 合规(备案未启动)· 增长(零)。
 
 ## 阶段 0 · 能给别人(本周)
-- [ ] TestFlight:唯一卡点 = Apple ID 登录 Xcode(**用户动作**);archive/export 已脚本化 `scripts/release-ios.sh`
+- [ ] TestFlight:唯一卡点 = Apple ID 登录 Xcode(**用户动作**);`scripts/release-ios.sh`+exportOptions 已就绪(2026-07-03)
 - [x] `/healthz` 端点 + 循环值守(每小时探活+关键指标,见 SKILL.md 迭代仪式)
 - [ ] 崩溃采集:接 MetricKit/第三方(候选 Sentry)——排期
 - [ ] 备案启动(**用户动作**:法务/资质材料)
@@ -15,7 +15,7 @@
 - [ ] 种子用户 5-10 个(朋友的孩子),建反馈微信群
 - [x] **Echo Brain ①**(2026-07-03 上线):transcripts+learner_notes+nightly dream+课堂注入,生产 e2e 验证通过
 - [ ] App 内反馈入口(Profile 一行)
-- [ ] 日报:日活/课次/完课率/转写质量抽样(SQL 脚本入库,循环值守读取)
+- [x] 日报脚本(2026-07-03):`apps/server/scripts/daily-stats.mjs`,首份数据:近24h 学习者2/会话6/开口22轮/dream档案1
 - [ ] 按反馈快修循环(体验问题 48h 内响应)
 
 ## 阶段 2 · 愿意留下+可持续(4-8 周)
