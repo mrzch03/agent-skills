@@ -18,7 +18,7 @@
 ## 资源分配战法(2026-07-03,✅ 用户已拍板执行)
 90 天内:**只投 Tapio(嘴)+ PawClass(脑/内容)**。ClawBox 主线三端(iOS/Clawdy/im-web)、agent-engine 及其平台栈全部冷冻保活;TokenGate 单独决策不混排。判据:单人执行力下,"三端并进"= 每端半熟;单点打穿才有第 2、3 步。冷冻线的复活顺序见 portfolio 姿态表。
 
-## agent-engine 战略论证(回应"没用上 agent 引擎会不会受限")
+## agent-engine 战略论证(2026-07-03 已被 roadmap.md 的 Echo Brain 三步方案取代,保留原论证备查)
 **短期不受限,长期是关键缺口——结论:M2 接入,角色是"跨日决策脑"。**
 - 现状:Tapio 的"排课"是确定性规则(pickTodayTarget/小关切分),简单可靠,**冷启动和日常够用**;
 - 天花板:遗忘曲线复习、跨日自适应调课、主动关怀(打卡断了会想你/考前冲刺)、家长周报——这些都需要**长程记忆+主动性**,正是 agent-engine think/wake/dream 的设计域(think=实时递招/wake=重活/dream=夜间沉淀);
