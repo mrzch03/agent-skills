@@ -31,6 +31,7 @@ xcrun devicectl device install app --device 00008150-001D1931367A401C \
 
 ## ClawBox 主线
 - **部署**:4 条 CI(push 触发;class-server 走 deploy-class.yml);详见 clawbox 本地 skill `workflow/verify-and-deploy.md`。
+- **PawClass 知识库(私教课底料)**:运行时真相在 K8s PVC `/data/knowledge-base`(class-server 挂载,不进镜像);版本化镜像 + 双向同步 SOP + 概念文件格式契约在 clawbox 仓 **`kb/README.md`**(2026-07-03 PR #224)。改素材:改仓库→推 PVC→**重启 tapio-server**(进程内 conceptDetailCache)。概念 md 必须有 `## 规则/易错点/例句` 的 `- ` bullet,否则 Tapio 私教课抽空底料。
 - **查问题**:CLS 日志(Seoul,5 服务统一 JSON,用 `cls-logs` skill);agent turn 排障用 `agent-trace-debug` skill(turn_id 串 Langfuse+PG+CLS);K3s 节点怪癖(ip_forward 等)见 memory。
 
 ## 通用

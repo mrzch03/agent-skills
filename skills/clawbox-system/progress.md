@@ -3,6 +3,8 @@
 > 2026-07-03 初始化。
 
 ## 进行中
+- **KB 素材线**(2026-07-03 下午):① 发现并版本化生产 PVC 知识库(41 概念/全册 syllabus,此前唯一副本无备份;仓库只有 9 概念过时种子)→ clawbox PR #224 已合并,同步 SOP 写进 `kb/README.md`。② 充实 4 个真实纠错高频概念(comparative-adjectives/exclamatory-sentences/some-in-questions/whom-usage):规则×4/易错点×3(❌→✅)/例句×4,已推 PVC 过 API 验证,tapio-server 已重启清缓存。**下一批**:PVC 上还有 ~10 个 <30 行的薄概念(both-usage/phonetics/infinitive-of-purpose 等),按真实课堂命中频率逐批充实。
+- **第一次 nightly dream 是今晚**:北京 7/4 03:30(此前台账把时间线记早了一天——transcripts 首批数据是 7/3 12:33 部署后才有的)。重启后定时器已重挂(pod 日志 `next nightly sweep in 643 min`)。明早验证:`grep '\[dream\]'` + daily-stats。
 - **Echo Brain ① 已上线**(2026-07-03):session_transcripts + learner_notes + nightly dream(北京03:30)+ 课堂注入。生产 e2e 验证:档案质量真实(兴趣/带日期近况/状态/线头,零学情越界),"上次篮球赛赢了几分?"进课堂 prompt。下一步:真实学生数据观察一周,再进 ②(APNs+常驻主动性)。
 - **90 天收敛战法执行中**(2026-07-03 用户拍板):只投 Tapio+PawClass;其余冷冻保活;agent-engine ≥50 周活触发。每次会话按此分配时间。
 - Tapio:等用户真机走"初见+一节课"终验(PTT 手感/黑板时机/等级准确度)。
