@@ -9,6 +9,8 @@
 - **Echo Brain ① 已上线**(2026-07-03):session_transcripts + learner_notes + nightly dream(北京03:30)+ 课堂注入。生产 e2e 验证:档案质量真实(兴趣/带日期近况/状态/线头,零学情越界),"上次篮球赛赢了几分?"进课堂 prompt。下一步:真实学生数据观察一周,再进 ②(APNs+常驻主动性)。
 - **90 天收敛战法执行中**(2026-07-03 用户拍板):只投 Tapio+PawClass;其余冷冻保活;agent-engine ≥50 周活触发。每次会话按此分配时间。
 - Tapio:等用户真机走"初见+一节课"终验(PTT 手感/黑板时机/等级准确度)。
+- **crash 采集已上线**(2026-07-03 晚,Tapio `97b99ac`):iOS MetricKit CrashReporter + POST /metrics/diagnostics + client_diagnostics 表(JSONB,人读)。45 测试过,已部署,等下一次真机安装生效。查询:`SELECT kind, app_version, created_at FROM client_diagnostics`。
+- **TestFlight 建 record 说明已写**:Tapio 仓 `docs/asc-create-app.md`,可交任意 agent/操作者照做;我的自动化浏览器窗口也还开着备用。
 - 教育备案:未启动,是正式上线最长杆——需尽早。
 
 ## 待验证
