@@ -23,6 +23,21 @@ xcrun devicectl device install app --device 00008150-001D1931367A401C \
   /tmp/tapio-dev/Build/Products/Debug-iphoneos/Tapio.app
 # 设备锁屏/离线 → 循环重试(150s 间隔),上线即装
 ```
+### 部署 Android(apps/android;SDK 优先架构)
+```bash
+cd ~/Ideas/Tapio/apps/android
+./gradlew :app:assembleRelease          # 签名 APK → app/build/outputs/apk/release/
+./gradlew :tapio-sdk:publishToMavenLocal # SDK → ~/.m2/.../ai/tapio/tapio-sdk/<ver>/
+# 版本唯一来源 gradle.properties TAPIO_SDK_VERSION;集成文档 apps/android/SDK.md
+```
+### Android 模拟器 QA(无 qaToken 机制,用真注册流)
+```bash
+# AVD tapio-qa(Pixel6/android-34)已建;emulator -avd tapio-qa
+# 流程:POST /auth/email/register 建号 → UI 登录 → 跳过初见 →
+#   pod 里 INSERT learner_level 种锚点 → 重启 app 即有「今天的课」
+# 录音权限:adb shell pm grant ai.tapio.tapio android.permission.RECORD_AUDIO
+# 精确点击:uiautomator dump 拿 bounds,别猜坐标
+```
 ### 查问题
 - **全链路回归**:`apps/server/scripts/voice-e2e/`(合成语音 e2e,README 含全部踩坑)。
 - **看用户说了什么/写回**:`kubectl logs -n tapio <pod> | grep writeback`(pod 滚动只留两代,及时抓)。
