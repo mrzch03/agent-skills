@@ -1,19 +1,20 @@
 ---
 name: issue-branch
-description: issue 优先 + 带编号分支的开发纪律。任何新功能/改 bug/重构,先建 issue(目标/背景/范围),再从它派生带 issue 编号的分支,commit 引用编号,PR/MR 关闭 issue。当用户说"开 issue/建分支/开始做 X"时使用。工具无关(GitHub/GitLab/本地 markdown 均可)。
+description: 建立任务、分支与 PR/MR 的可追溯关系。用于开始开发、建立分支或提合并请求；复用已有 issue、任务文档或用户确认的工作单元，遵循项目命名与合并规则。
 ---
 
-# issue-branch — issue 优先 + 带编号分支
+# issue-branch — 任务与改动可追溯
 
-强制顺序:**Issue → 分支(含编号)→ 开发 → PR/MR(关闭 Issue)**。即使有人直接说"建个分支叫 fix-xxx",也**先建 issue 再派生**。绝不在没有关联 issue 的情况下建分支/MR——否则工作无来由、无归档、无验收。
+目标是让改动有来由、有范围、有验收。是否必须使用外部 issue、分支格式和关闭时机由项目规定；用户指定的已有分支和授权要保留，不为套模板重建工作。
 
 ## 步骤
-1. **建 issue**:写背景 + 目标 + 范围(**不含实现**)。issue tracker 按你项目约定:GitHub issue / GitLab issue / 无 forge 时 `.scratch/issues/` 下 markdown。
-2. **派生分支**:`feat/<issue号>-<topic>` 或 `fix/<issue号>-<topic>`,从最新集成基线切。
-3. **commit 引用编号**:每条 TODO 单独 commit,message 带 issue 号(见 `dev-standards` 提交规范)。
-4. **PR/MR**:描述写 `Closes #<号>`,合入即关 issue。
 
-## 工具无关
-- GitHub:`gh issue create` / `gh pr create`。
-- GitLab:`glab` 或 REST API(token 走环境变量如 `$GIT_FORGE_TOKEN`,**不硬编码**)。
-- 无 forge:issue 写成 `.scratch/issues/<id>.md`,分支名仍带该 id。
+1. 找到现有任务、issue 或需求文档，写清背景、目标、范围和验收。项目要求 issue 时按要求创建；否则可在 PR 或本地任务文件记录，避免同一任务多处重复维护。
+2. 确认当前分支、未提交工作和依赖提交。按项目基线建立短分支，或继续用户指定的分支；任务编号在项目要求时加入命名。
+3. 按 [dev-standards](../dev-standards/SKILL.md) 提交完整改动，消息说明目的并关联任务；不要把协议与生成代码拆散。
+4. PR/MR 写清问题、最终行为、验证证据与未验证项，目标分支和最终差异范围正确。
+5. 仅当合入确实完成 issue 的全部验收时使用自动关闭。仍待真实联调、迁移或部署的任务保留对应待办与责任，不让关闭动作抹掉缺口。
+
+## 工具与授权
+
+使用可用的 GitHub/GitLab 连接器、CLI 或本地文档。建 issue、推送、PR、合并和部署分别按任务授权执行；使用 skill 不等于获得这些操作的额外授权。凭据从已有安全配置读取，不写入任务内容。
