@@ -19,6 +19,7 @@
 | **issue-branch** | issue 优先 + 带编号分支纪律(Issue→分支→开发→PR 关 Issue),工具无关 |
 | **codex-review** | 独立评审闸门:喂规范+背景+方案,独立读 diff 出 VERDICT(APPROVE/CHANGES_REQUESTED) |
 | **verify** | 带证据的验证:真跑、观察预期、留日志/截图/DB行/trace,别在没证据时说"做完了" |
+| **product-design-review** | 产品交互设计与走查:从用户已有材料和目标出发，检查任务结构、直接操作、反馈恢复、上下文与冲突可视化，用完整场景验收 |
 
 ## 项目系统 skill(2026-07-03 起,本仓新增分区)
 除通用骨架外,本仓也承载**我们自己的产品体系总纲**:
