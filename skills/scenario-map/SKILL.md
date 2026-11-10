@@ -37,6 +37,7 @@ description: 开发/排查的总入口与场景地图——核心原则(第一�
 | 开 issue / 建带编号分支 / 提 PR·MR(issue 优先) | `issue-branch` |
 | 独立评审本地分支("走流程") | `codex-review` |
 | 跑应用验证 / 自测出证据 | `verify` |
+| 产品交互设计 / UI·UE 走查 / 页面流程优化 | `product-design-review`（任务起点→直接操作→反馈恢复→完整场景验收） |
 | 给某项目/业务场景建一个"认知 skill" | `project-skill-blueprint` |
 
 **项目专属(占位,右列按你的项目填):**
