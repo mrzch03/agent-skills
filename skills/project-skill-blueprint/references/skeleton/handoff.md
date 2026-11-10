@@ -1,7 +1,7 @@
-# 交接(接手先读这页;一事一两行,完结即删行)
+# 交接(接手先读这页;一事一两行,验收及归档完成后删行)
 
-> 层级:knowledge/lessons/troubleshooting=元事实 ← 工作区根 `issues/`=工作单元 ← 本页=交接指针。
-> 历史=git log(commit 引 issue 号)+ 已关 forge issue,不留第二份。
+> 层级:knowledge/lessons/troubleshooting=元事实 ← 项目指定任务记录=工作单元 ← 本页=交接指针。
+> 历史查 git 与项目指定的任务归档，不留第二份流水账。下方链接替换为项目实际位置。
 
 ## 主线
 

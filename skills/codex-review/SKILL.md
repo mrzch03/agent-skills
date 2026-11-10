@@ -1,23 +1,32 @@
 ---
 name: codex-review
-description: 对本地分支改动做一次独立评审(codex CLI 或任意独立 reviewer):喂规范+需求背景+技术方案,让它独立读 diff 与上下文,出 VERDICT(APPROVE / CHANGES_REQUESTED)。当用户说"走流程/独立审/codex review/审这个分支/审 MR"时使用。是 feature-flow / hotfix-flow 的评审闸门。
+description: 对明确范围的代码或文档改动进行独立评审。提供项目规范、需求、设计和验证证据，由独立 reviewer 自行读取差异与上下文，输出通过、需修改或证据不足；适用于标准功能、高风险变更和明确请求的评审。
 ---
 
-# codex-review — 独立评审闸门
+# codex-review — 独立评审
 
-代码写完后,用一个**独立** reviewer 审本地分支改动。它独立读 diff + 自取上下文,不靠你转述。
+按 [dev-flow](../dev-standards/dev-flow.md) 判断是否需要独立评审。需要时使用独立 reviewer/代理，不能把作者自检写成独立评审；工具不可用则记录待审，不伪造结论。
 
-## 怎么做
-1. 在仓库根,让 reviewer 看改动:`git diff <集成基线>...<feat分支>`(**只审一笔**用 `git show <commit>`,别带整条分支的无关改动)。
-2. **喂全上下文**:开发规范(`dev-standards`)+ 需求背景 + 技术方案(文档链接/正文)一起给——否则是空审 diff。
-3. 评审标准:正确性(逻辑/边界/并发/回归)、**直击本质非堆机制**、与仓内约定一致;**性能必查**(共享 Redis 禁全库扫、大表 SQL 过 EXPLAIN、警惕无界大 key 读);**新增/改 SQL 必带 EXPLAIN**(无则判 CHANGES_REQUESTED)。
-4. 输出第一行 **`VERDICT: APPROVE` 或 `VERDICT: CHANGES_REQUESTED`**,之后列依据。
+## 评审输入
 
-## 闸门
-- **CHANGES_REQUESTED** → 改完**同分支再审**,直到 APPROVE。
-- **APPROVE** → 进测试 / 合入。
-- 结论贴到对应 issue/MR 留痕;没有就汇报给用户。
+- 用户目标、范围、验收场景、项目规范和相关设计。
+- 基线和候选提交，以及未提交/未跟踪文件清单。分支比较可用 `git diff <base>...<head>`，但它不含工作区改动；未提交评审需补读 `git diff HEAD` 与新文件。
+- 已执行的测试、环境、结果、已知限制。避免只转述作者结论，reviewer 要自行检查源文件和行为。
 
-## 工具无关(codex CLI 是一种实现)
-任意能"独立读 diff + 出 VERDICT"的 reviewer 都行。**read-only 评审**,别让它改代码。
-用 codex CLI 时:`codex exec --sandbox read-only "<评审 prompt>" < /dev/null`(显式喂 stdin,后台/非 TTY 才不会卡);输出重定向到文件再读,别 `| tail`;推理要几分钟,没输出别杀进程。
+## 评审内容
+
+1. 正确性、边界、失败恢复、并发与回归风险；合同兼容、权限和资源生命周期按改动适用。
+2. 对照用户任务与验收检查功能是否闭合；UI 评审结合 [product-design-review](../product-design-review/SKILL.md)。
+3. 设计是否解决根因、与项目约定一致；不因抽象数量或文件行数机械否决。
+4. 性能变化检查规模、频率、扫描量与无界操作；数据访问按 [数据库规范](../dev-standards/db-conventions.md) 判断所需证据，不把 MySQL 的执行计划规则套给其他引擎。
+5. 测试是否覆盖关键行为、是否还有必须验证的环境或组合结果。
+
+## 输出与后续
+
+首行使用 `VERDICT: APPROVE`、`VERDICT: CHANGES_REQUESTED` 或 `VERDICT: INCONCLUSIVE`。
+- APPROVE：评审范围内无阻塞问题；列明审查范围和证据限制，不代表已部署或所有真实环境均通过。
+- CHANGES_REQUESTED：列出具体位置、触发条件、影响及修改建议；区分阻塞问题和可选改进。
+- INCONCLUSIVE：缺少上下文、必需证据或环境，无法给出可靠结论；明确需要补什么。
+
+修复后复验受影响部分，再对更新后的候选版本评审。测试、评审、项目批准及发布条件分别满足；不能凭一行 APPROVE 跳过其他检查。
+按任务授权把结论留在任务/PR，或报告给用户。评审只读，不让 reviewer 修改实现。
